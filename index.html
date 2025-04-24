@@ -99,6 +99,24 @@
     <div class="progress">Cumplimiento: 0%</div>
   </div>
 
+  <div class="checklist-section" id="semestrales">
+    <h2>Actividades Semestrales</h2>
+    <label><input type="checkbox" onchange="updateProgress('semestrales')"> Verificación ante PROFECO - Enero</label>
+    <label><input type="checkbox" onchange="updateProgress('semestrales')"> Verificación ante PROFECO - Agosto</label>
+    <div class="progress">Cumplimiento: 0%</div>
+  </div>
+
+  <div class="checklist-section" id="anuales">
+    <h2>Actividades Anuales</h2>
+    <label><input type="checkbox" onchange="updateProgress('anuales')"> Gestión de trámites ante dependencias (licencia, uso de suelo, Profeco, PC)</label>
+    <label><input type="checkbox" onchange="updateProgress('anuales')"> Revisión de caducidad de mantenimiento de extintores</label>
+    <label><input type="checkbox" onchange="updateProgress('anuales')"> Retoque y revisión de botes areneros</label>
+    <label><input type="checkbox" onchange="updateProgress('anuales')"> Revisión y actualización de tótem de información (viniles)</label>
+    <label><input type="checkbox" onchange="updateProgress('anuales')"> Lavado de gabinetes de extintores y retoque</label>
+    <label><input type="checkbox" onchange="updateProgress('anuales')"> Solicitud de uniformes del personal (según necesidad)</label>
+    <div class="progress">Cumplimiento: 0%</div>
+  </div>
+
   <script>
     function updateProgress(sectionId) {
       const section = document.getElementById(sectionId);
@@ -109,7 +127,9 @@
       section.querySelector('.progress').textContent = `Cumplimiento: ${percentage}%`;
     }
     window.onload = function () {
-      ['diarias', 'semanales', 'mensuales'].forEach(updateProgress);
+      ['diarias', 'semanales', 'mensuales', 'semestrales', 'anuales'].forEach(id => {
+        if (document.getElementById(id)) updateProgress(id);
+      });
     }
   </script>
 </body>
